@@ -13,7 +13,6 @@ composer.callbackQuery("create_team", async (ctx) => {
   await ctx.editMessageText("Enter team name.", {
     reply_markup: inlineKeyboard([[inlineButton("Cancel", "menu:main")]]),
   });
-  // For input, wait for text in session flow (stub for full impl). Full flow requires ForceReply + text handler.
 });
 
 export default composer;
