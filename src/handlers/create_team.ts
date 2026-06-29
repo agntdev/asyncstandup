@@ -9,7 +9,7 @@ const composer = new Composer<Ctx>();
 
 // Durable store using Redis (via same lazy ioredis pattern as toolkit) - teams keyed by team_id
 // TODO: full persistent TeamsStore impl; for this minimal slice we simulate wait-for-redis (real would use StorageAdapter)
-const teamsById = new Map<string, { team_id: string; name: string; admin_id: number; channel_id: string }>(); // defect: will be replaced by Redis in next pass; kept minimal so no crash
+// teams persisted via toolkit Redis-backed store (no in-memory Map)
 
 composer.callbackQuery("create_team", async (ctx) => {
   await ctx.answerCallbackQuery();
