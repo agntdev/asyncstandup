@@ -1,0 +1,38 @@
+[
+  {
+    "name": "create team flow: empty name rejected",
+    "steps": [
+      {
+        "send": { "callback": "create_team" },
+        "expect": [
+          { "method": "answerCallbackQuery" },
+          { "method": "editMessageText", "payload": { "text": "Team name?" } }
+        ]
+      },
+      {
+        "send": { "text": "   " },
+        "expect": [
+          { "method": "sendMessage", "payload": { "text": "Please enter a non-empty team name." } }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "create team flow: valid name progresses and persists",
+    "steps": [
+      {
+        "send": { "callback": "create_team" },
+        "expect": [
+          { "method": "answerCallbackQuery" },
+          { "method": "editMessageText", "payload": { "text": "Team name?" } }
+        ]
+      },
+      {
+        "send": { "text": "My Team" },
+        "expect": [
+          { "method": "sendMessage", "payload": { "text": "Provide the team channel ID for digests." } }
+        ]
+      }
+    ]
+  }
+]
