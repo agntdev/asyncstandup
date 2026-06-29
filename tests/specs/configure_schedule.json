@@ -1,1 +1,1 @@
-[{"name":"configure_schedule entry","steps":[{"send":{"callback":"configure_schedule"},"expect":[{"method":"answerCallbackQuery"},{"method":"editMessageText","payload":{"text":"Configure Schedule is not yet available."}}]}]}]
+[{"name":"configure_schedule entry","steps":[{"send":{"callback":"configure_schedule"},"expect":[{"method":"answerCallbackQuery"},{"method":"editMessageText","payload":{"text":"No schedule set yet — an admin needs to configure the daily standup time, days, and cutoff."}}]}]}]

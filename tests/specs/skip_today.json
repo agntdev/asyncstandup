@@ -1,1 +1,1 @@
-[{"name":"skip_today entry","steps":[{"send":{"callback":"skip_today"},"expect":[{"method":"answerCallbackQuery"},{"method":"editMessageText","payload":{"text":"Skip Today is not yet available."}}]}]}]
+[{"name":"skip_today entry","steps":[{"send":{"callback":"skip_today"},"expect":[{"method":"answerCallbackQuery"},{"method":"editMessageText","payload":{"text":"No active standup run for you today. Use Mark Off if needed for future runs."}}]}]}]

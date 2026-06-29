@@ -7,7 +7,7 @@ registerMainMenuItem({ label: "⏰ Configure Schedule", data: "configure_schedul
 const composer = new Composer<Ctx>();
 composer.callbackQuery("configure_schedule", async (ctx) => {
   await ctx.answerCallbackQuery();
-  await ctx.editMessageText("Configure Schedule is not yet available.", {
+  await ctx.editMessageText("No schedule set yet — an admin needs to configure the daily standup time, days, and cutoff.", {
     reply_markup: inlineKeyboard([[inlineButton("⬅️ Back to menu", "menu:main")]]),
   });
 });

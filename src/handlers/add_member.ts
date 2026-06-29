@@ -7,7 +7,7 @@ registerMainMenuItem({ label: "👤 Add Member", data: "add_member", order: 20 }
 const composer = new Composer<Ctx>();
 composer.callbackQuery("add_member", async (ctx) => {
   await ctx.answerCallbackQuery();
-  await ctx.editMessageText("Add Member is not yet available.", {
+  await ctx.editMessageText("No members yet — tap the button from your team admin to invite via username.", {
     reply_markup: inlineKeyboard([[inlineButton("⬅️ Back to menu", "menu:main")]]),
   });
 });

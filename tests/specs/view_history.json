@@ -1,1 +1,1 @@
-[{"name":"view_history entry","steps":[{"send":{"callback":"view_history"},"expect":[{"method":"answerCallbackQuery"},{"method":"editMessageText","payload":{"text":"View History is not yet available."}}]}]}]
+[{"name":"view_history entry","steps":[{"send":{"callback":"view_history"},"expect":[{"method":"answerCallbackQuery"},{"method":"editMessageText","payload":{"text":"No standup history yet. History will appear here after the first daily run completes."}}]}]}]
