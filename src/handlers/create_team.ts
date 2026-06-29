@@ -10,7 +10,7 @@ const back = inlineKeyboard([[inlineButton("⬅️ Back to menu", "menu:main")]]
 
 composer.callbackQuery("create_team", async (ctx) => {
   await ctx.answerCallbackQuery();
-  await ctx.editMessageText("Enter team name.", {
+  await ctx.editMessageText("Team name?", {
     reply_markup: inlineKeyboard([[inlineButton("Cancel", "menu:main")]]),
   });
 });
