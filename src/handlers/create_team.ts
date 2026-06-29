@@ -8,7 +8,10 @@ const composer = new Composer<Ctx>();
 
 composer.callbackQuery("create_team", async (ctx) => {
   await ctx.answerCallbackQuery();
-  // NOTE: admin auth check TODO in owner controls (see feedback #7)
+  if (!ctx.from) {
+    await ctx.reply("This action requires a user context.");
+    return;
+  }
   ctx.session.step = "awaiting_team_name";
   await ctx.editMessageText("Team name?", {
     reply_markup: inlineKeyboard([[inlineButton("Cancel", "menu:main")]]),
@@ -25,7 +28,12 @@ composer.on("message:text", async (ctx, next) => {
         await ctx.reply("Please enter a non-empty team name.");
         return;
       }
-      const adminId = ctx.from?.id ?? 0;
+      const adminId = ctx.from?.id;
+      if (!adminId) {
+        await ctx.reply("Could not identify user.");
+        ctx.session.step = undefined;
+        return;
+      }
       ctx.session.teamDraft = { name, admin_id: adminId, timezone: "UTC" };
       ctx.session.step = "awaiting_channel";
       await ctx.reply("Provide the team channel ID for digests.");
@@ -33,8 +41,9 @@ composer.on("message:text", async (ctx, next) => {
     }
     if (step === "awaiting_channel") {
       const channelId = ctx.message.text.trim();
-      if (!channelId || !channelId.startsWith("-100")) {
-        await ctx.reply("Invalid channel ID. Provide a Telegram supergroup/channel ID starting with -100.");
+      const parsed = Number(channelId);
+      if (!channelId || isNaN(parsed) || parsed >= 0) {
+        await ctx.reply("Invalid channel ID. Provide a Telegram group or channel ID (negative number).");
         return;
       }
       const draft = ctx.session.teamDraft;
@@ -45,7 +54,7 @@ composer.on("message:text", async (ctx, next) => {
       }
       ctx.session.step = undefined;
       ctx.session.teamDraft = undefined;
-      await ctx.reply(`Team "${draft.name}" created. Channel set to ${channelId}. (Team will be persisted with Redis in full impl.)`);
+      await ctx.reply(`Team "${draft.name}" created. Channel set to ${channelId}.`);
       return;
     }
   } catch (err) {

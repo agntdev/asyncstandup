@@ -1,0 +1,1 @@
+[{"name":"add_member entry","steps":[{"send":{"callback":"add_member"},"expect":[{"method":"answerCallbackQuery"},{"method":"editMessageText","payload":{"text":"Add Member is not yet available."}}]}]}]

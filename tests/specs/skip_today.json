@@ -1,0 +1,1 @@
+[{"name":"skip_today entry","steps":[{"send":{"callback":"skip_today"},"expect":[{"method":"answerCallbackQuery"},{"method":"editMessageText","payload":{"text":"Skip Today is not yet available."}}]}]}]
