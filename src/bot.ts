@@ -8,8 +8,6 @@ import { createBot, type BotContext } from "./toolkit/index.js";
 export interface Session {
   step?: "awaiting_team_name" | "awaiting_channel" | "awaiting_username" | "awaiting_timezone" | "awaiting_schedule_time" | "awaiting_schedule_days" | "awaiting_cutoff" | "awaiting_reminder_delay" | "awaiting_questions" | "awaiting_history_filter";
   teamDraft?: { name: string; admin_id: number; timezone: string };
-  memberDraft?: { username: string; timezone: string };
-  scheduleDraft?: { local_time?: string; days_of_week?: number[]; cutoff_time?: string; reminder_delay?: number };
 }
 
 export type Ctx = BotContext<Session>;
