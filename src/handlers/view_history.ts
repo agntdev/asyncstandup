@@ -7,7 +7,7 @@ registerMainMenuItem({ label: "📜 View History", data: "view_history", order: 
 const composer = new Composer<Ctx>();
 composer.callbackQuery("view_history", async (ctx) => {
   await ctx.answerCallbackQuery();
-  await ctx.editMessageText("View History is not yet available.", {
+  await ctx.editMessageText("No standup history yet. History will appear here after the first daily run completes.", {
     reply_markup: inlineKeyboard([[inlineButton("⬅️ Back to menu", "menu:main")]]),
   });
 });

@@ -1,1 +1,1 @@
-[{"name":"edit_questions entry","steps":[{"send":{"callback":"edit_questions"},"expect":[{"method":"answerCallbackQuery"},{"method":"editMessageText","payload":{"text":"Edit Questions is not yet available."}}]}]}]
+[{"name":"edit_questions entry","steps":[{"send":{"callback":"edit_questions"},"expect":[{"method":"answerCallbackQuery"},{"method":"editMessageText","payload":{"text":"Using default standup questions. Admins can customize later."}}]}]}]

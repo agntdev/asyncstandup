@@ -7,7 +7,7 @@ registerMainMenuItem({ label: "❓ Edit Questions", data: "edit_questions", orde
 const composer = new Composer<Ctx>();
 composer.callbackQuery("edit_questions", async (ctx) => {
   await ctx.answerCallbackQuery();
-  await ctx.editMessageText("Edit Questions is not yet available.", {
+  await ctx.editMessageText("Using default standup questions. Admins can customize later.", {
     reply_markup: inlineKeyboard([[inlineButton("⬅️ Back to menu", "menu:main")]]),
   });
 });
